@@ -1,0 +1,24 @@
+.git
+.gitignore
+
+Dockerfile
+.dockerignore
+
+# Terraform
+infra/
+
+# CI/CD
+.github/
+
+
+app/.env
+app/node_modules/
+app/dist/
+app/fider
+app/ssr.js
+
+.DS_Store
+Thumbs.db
+
+.vscode/
+.idea/
