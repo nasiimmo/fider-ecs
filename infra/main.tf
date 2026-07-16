@@ -25,3 +25,9 @@ module "rds" {
   environment = var.environment
   name_prefix = var.name_prefix
 }
+
+module "iam" {
+  source      = "./modules/iam"
+  environment = var.environment
+  name_prefix = var.name_prefix
+}
