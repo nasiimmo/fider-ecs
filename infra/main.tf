@@ -1,7 +1,14 @@
 module "network" {
-  source = "./modules/vpc"
-  vpc_cidr = var.vpc_cidr
+  source             = "./modules/vpc"
+  vpc_cidr           = var.vpc_cidr
   availability_zones = var.availability_zones
+  environment        = var.environment
+  name_prefix        = var.name_prefix
+}
+
+module "acm" {
+  source      = "./modules/acm"
+  domain_name = var.domain_name
   environment = var.environment
   name_prefix = var.name_prefix
 }
