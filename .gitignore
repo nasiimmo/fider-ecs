@@ -34,3 +34,5 @@ go.work.sum
 *.tfvars
 **/.terraform/
 **/.terraform.lock.hcl
+**/.terraform/
+**/.terraform.lock.hcl
