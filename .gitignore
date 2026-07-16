@@ -31,3 +31,6 @@ go.work.sum
 # .idea/
 # .vscode/
 .env.docker
+*.tfvars
+**/.terraform/
+**/.terraform.lock.hcl
