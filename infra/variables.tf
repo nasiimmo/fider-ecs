@@ -75,3 +75,9 @@ variable "image_tag" {
   description = "Docker image tag to deploy"
   type        = string
 }
+
+variable "jwt_secret" {
+  description = "Secret key for JWT authentication"
+  type        = string
+  sensitive   = true
+}

@@ -34,12 +34,7 @@ variable "db_password" {
   sensitive   = true
 }
 
-# variable "ecs_security_group_id" {
-#   description = "The security group ID for ECS tasks that need access to the RDS instance"
-#   type        = string
-# }
-
-variable "vpc_cidr" {
-  description = "The CIDR block of the VPC"
+variable "ecs_security_group_id" {
+  description = "The security group ID for ECS tasks that need access to the RDS instance"
   type        = string
 }

@@ -7,9 +7,7 @@ resource "aws_security_group" "rds_sg" {
     from_port       = 5432
     to_port         = 5432
     protocol        = "tcp"
-    # TODO: replace with ECS security group reference once ECS module is created
-    # security_groups = [var.ecs_security_group_id]
-    cidr_blocks = [var.vpc_cidr]
+    security_groups = [var.ecs_security_group_id]
   }
 
   egress {

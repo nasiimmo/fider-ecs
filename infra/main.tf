@@ -20,8 +20,7 @@ module "rds" {
   db_name            = var.db_name
   db_username        = var.db_username
   db_password        = var.db_password
-  # ecs_security_group_id = module.ecs.ecs_security_group_id
-  vpc_cidr    = var.vpc_cidr
+  ecs_security_group_id = module.ecs.ecs_security_group_id
   environment = var.environment
   name_prefix = var.name_prefix
 }
@@ -46,4 +45,24 @@ module "ecr" {
   environment     = var.environment
   name_prefix     = var.name_prefix
   repository_name = "fider"
+}
+
+module "ecs" {
+  source                = "./modules/ecs"
+  vpc_id                = module.network.vpc_id
+  private_subnet_ids    = module.network.private_subnet_ids
+  alb_security_group_id = module.alb.security_group_sg
+  target_group_arn      = module.alb.target_group_arn
+  execution_role_arn    = module.iam.ecs_execution_role_arn
+  ecr_repository_url    = module.ecr.repository_url
+  image_tag             = var.image_tag
+  db_endpoint           = module.rds.db_endpoint
+  db_port               = module.rds.db_port
+  db_name               = var.db_name
+  db_username           = var.db_username
+  db_password           = var.db_password
+  jwt_secret            = var.jwt_secret
+  domain_name           = var.domain_name
+  environment           = var.environment
+  name_prefix           = var.name_prefix
 }
