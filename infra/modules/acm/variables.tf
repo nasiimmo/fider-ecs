@@ -12,3 +12,14 @@ variable "name_prefix" {
   description = "The prefix for naming resources"
   type        = string
 }
+
+variable "cloudflare_zone_id" {
+  description = "The Cloudflare zone ID for the domain"
+  type        = string
+}
+
+variable "cloudflare_api_token" {
+  description = "The Cloudflare API token for DNS validation"
+  type        = string
+  sensitive   = true
+}
