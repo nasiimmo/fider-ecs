@@ -79,3 +79,8 @@ variable "domain_name" {
   description = "The domain name for the application"
   type        = string
 }
+
+variable "alb_https_listener_arn" {
+  description = "ARN of the HTTPS listener on the ALB"
+  type        = string
+}

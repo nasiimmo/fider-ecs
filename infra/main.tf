@@ -67,4 +67,5 @@ module "ecs" {
   domain_name           = var.domain_name
   environment           = var.environment
   name_prefix           = var.name_prefix
+  alb_https_listener_arn = module.alb.https_listener_arn
 }

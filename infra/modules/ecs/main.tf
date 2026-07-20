@@ -118,6 +118,8 @@ resource "aws_ecs_service" "main" {
   desired_count   = 1
   launch_type     = "FARGATE"
 
+  depends_on = [var.alb_https_listener_arn]
+
   network_configuration {
     subnets          = var.private_subnet_ids
     security_groups  = [aws_security_group.ecs.id]
