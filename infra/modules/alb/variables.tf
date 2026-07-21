@@ -22,3 +22,13 @@ variable "certificate_arn" {
   description = "The ARN of the ACM certificate for the RDS instance"
   type        = string
 }
+
+variable "cloudflare_zone_id" {
+  description = "The Cloudflare zone ID for DNS record creation"
+  type        = string
+}
+
+variable "cloudflare_api_token" {
+  description = "The Cloudflare API token for DNS record creation"
+  type        = string
+}

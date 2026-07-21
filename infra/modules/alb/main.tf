@@ -1,3 +1,16 @@
+terraform {
+  required_providers {
+    cloudflare = {
+      source  = "cloudflare/cloudflare"
+      version = "~> 4.0"
+    }
+  }
+}
+
+provider "cloudflare" {
+  api_token = var.cloudflare_api_token
+}
+
 # ALB Security Group
 resource "aws_security_group" "alb_sg" {
   name        = "${var.name_prefix}-alb-sg"
@@ -99,4 +112,14 @@ resource "aws_lb_listener" "https" {
     type             = "forward"
     target_group_arn = aws_lb_target_group.main.arn
   }
+}
+
+resource "cloudflare_record" "fider_dns" {
+  zone_id         = var.cloudflare_zone_id
+  name            = "fider"
+  type            = "CNAME"
+  content         = aws_lb.main.dns_name
+  ttl             = 1
+  proxied         = false
+  allow_overwrite = true
 }
