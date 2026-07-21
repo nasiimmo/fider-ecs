@@ -42,6 +42,8 @@ module "alb" {
   certificate_arn   = module.acm.certificate_arn
   environment       = var.environment
   name_prefix       = var.name_prefix
+  cloudflare_zone_id   = var.cloudflare_zone_id
+  cloudflare_api_token = var.cloudflare_api_token
 }
 
 module "ecr" {
