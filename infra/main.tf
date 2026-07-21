@@ -1,4 +1,4 @@
-# CI/CD test trigger
+# Test
 
 module "network" {
   source             = "./modules/vpc"
