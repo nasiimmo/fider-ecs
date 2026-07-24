@@ -6,6 +6,10 @@ on:
       - main
     paths:
       - 'infra/**'
+      - '!infra/terraform.tfvars'
+      - '!infra/provider.tf'
+      - '!infra/variables.tf'
+      - '!infra/outputs.tf'
 
 jobs:
   terraform-apply:
