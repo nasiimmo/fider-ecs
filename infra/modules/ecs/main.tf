@@ -96,10 +96,9 @@ resource "aws_ecs_task_definition" "main" {
       logConfiguration = {
         logDriver = "awslogs"
         options = {
-          "awslogs-group"         = "/ecs/${var.name_prefix}"
+          "awslogs-group"         = aws_cloudwatch_log_group.ecs.name
           "awslogs-region"        = "eu-west-2"
           "awslogs-stream-prefix" = "ecs"
-          "awslogs-create-group"  = "true"
         }
       }
     }
@@ -138,3 +137,12 @@ resource "aws_ecs_service" "main" {
   }
 }
 
+resource "aws_cloudwatch_log_group" "ecs" {
+  name              = "/ecs/${var.name_prefix}"
+  retention_in_days = 7
+
+  tags = {
+    Name        = "${var.name_prefix}-logs"
+    environment = var.environment
+  }
+}
