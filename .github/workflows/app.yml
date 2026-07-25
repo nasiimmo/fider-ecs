@@ -8,10 +8,8 @@ on:
       - 'app/**'
       - 'Dockerfile'
       - '.dockerignore'
-      - '!images/**'
+      - '!docs/**'
       - '!README.md'
-
-
 
 jobs:
   build-and-push:
@@ -43,3 +41,19 @@ jobs:
         run: |
           docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG .
           docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
+
+      - name: Trigger Terraform Apply
+        uses: actions/github-script@v7
+        env:
+          IMAGE_TAG: ${{ github.sha }}
+        with:
+          script: |
+            await github.rest.actions.createWorkflowDispatch({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              workflow_id: 'terraform-apply.yml',
+              ref: 'main',
+              inputs: {
+                image_tag: process.env.IMAGE_TAG
+              }
+            })
