@@ -11,4 +11,8 @@ resource "aws_ecr_repository" "main" {
     Name        = "${var.name_prefix}-ecr"
     environment = var.environment
   }
+
+  lifecycle {
+    prevent_destroy = true
+  }
 }
