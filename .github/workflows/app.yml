@@ -8,6 +8,9 @@ on:
       - 'app/**'
       - 'Dockerfile'
       - '.dockerignore'
+      - '!images/**'
+      - '!README.md'
+
 
 
 jobs:
