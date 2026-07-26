@@ -76,3 +76,4 @@ module "ecs" {
 # clean start
 # clean deploy
 # test
+# automation test
