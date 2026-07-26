@@ -78,7 +78,7 @@ resource "aws_ecs_task_definition" "main" {
         },
         {
           name  = "EMAIL_NOREPLY"
-          value = var.admin_email
+          value = "noreply@${var.domain_name}"
         },
         {
           name  = "EMAIL_SMTP_HOST"
@@ -87,14 +87,6 @@ resource "aws_ecs_task_definition" "main" {
         {
           name  = "EMAIL_SMTP_PORT"
           value = "587"
-        },
-        {
-          name  = "EMAIL_SMTP_USERNAME"
-          value = var.smtp_username
-        },
-        {
-          name  = "EMAIL_SMTP_PASSWORD"
-          value = var.smtp_password
         },
         {
           name  = "BLOB_STORAGE"
@@ -155,4 +147,3 @@ resource "aws_cloudwatch_log_group" "ecs" {
     environment = var.environment
   }
 }
-

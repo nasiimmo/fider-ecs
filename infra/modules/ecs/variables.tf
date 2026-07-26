@@ -84,19 +84,3 @@ variable "alb_https_listener_arn" {
   description = "ARN of the HTTPS listener on the ALB"
   type        = string
 }
-
-variable "admin_email" {
-  description = "Admin email for Fider noreply"
-  type        = string
-}
-
-variable "smtp_username" {
-  description = "SES SMTP username"
-  type        = string
-}
-
-variable "smtp_password" {
-  description = "SES SMTP password"
-  type        = string
-  sensitive   = true
-}

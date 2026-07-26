@@ -12,11 +12,8 @@ on:
       - '!infra/outputs.tf'
       - '!images/**'
       - '!README.md'
-  workflow_dispatch:
-    inputs:
-      image_tag:
-        required: false
-        type: string
+
+
   workflow_call:
     inputs:
       image_tag:
@@ -38,7 +35,6 @@ jobs:
       TF_VAR_cloudflare_zone_id: ${{ secrets.CLOUDFLARE_ZONE_ID }}
       TF_VAR_db_username: ${{ secrets.DB_USERNAME }}
       TF_VAR_image_tag: ${{ inputs.image_tag || secrets.TF_VAR_image_tag }}
-      TF_VAR_admin_email: ${{ secrets.TF_VAR_admin_email }}
 
     steps:
       - name: Checkout code
