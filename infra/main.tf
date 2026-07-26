@@ -75,3 +75,4 @@ module "ecs" {
 # update
 # clean start
 # clean deploy
+# test
