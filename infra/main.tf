@@ -70,6 +70,7 @@ module "ecs" {
   environment            = var.environment
   name_prefix            = var.name_prefix
   alb_https_listener_arn = module.alb.https_listener_arn
+  admin_email = var.admin_email
 }
 
 module "ses" {

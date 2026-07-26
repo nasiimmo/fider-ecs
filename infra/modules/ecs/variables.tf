@@ -84,3 +84,8 @@ variable "alb_https_listener_arn" {
   description = "ARN of the HTTPS listener on the ALB"
   type        = string
 }
+
+variable "admin_email" {
+  description = "Admin email for Fider noreply"
+  type        = string
+}

@@ -78,7 +78,7 @@ resource "aws_ecs_task_definition" "main" {
         },
         {
           name  = "EMAIL_NOREPLY"
-          value = "noreply@${var.domain_name}"
+          value = var.admin_email
         },
         {
           name  = "EMAIL_SMTP_HOST"
