@@ -74,3 +74,4 @@ HEALTHCHECK --interval=10s --timeout=5s --retries=3 \
 CMD ./fider migrate && ./fider# test
 
 
+# ses test
