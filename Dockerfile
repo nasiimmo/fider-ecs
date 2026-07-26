@@ -77,3 +77,4 @@ CMD ./fider migrate && ./fider# test
 # trigger
 # pipeline test
 # test
+# test
