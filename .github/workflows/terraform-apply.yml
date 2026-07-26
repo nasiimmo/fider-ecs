@@ -56,14 +56,13 @@ jobs:
       - name: Terraform Init
         run: terraform init
 
+      - name: Import ECR repository if exists
+        run: |
+          aws ecr describe-repositories --repository-names fider-ecs --region eu-west-2 2>/dev/null && \
+          terraform import module.ecr.aws_ecr_repository.main fider-ecs || true
+
       - name: Terraform Plan
         run: terraform plan
 
       - name: Terraform Apply
         run: terraform apply -auto-approve
-
-      - name: Import ECR repository if exists
-        working-directory: infra
-        run: |
-          aws ecr describe-repositories --repository-names fider-ecs --region eu-west-2 2>/dev/null && \
-          terraform import module.ecr.aws_ecr_repository.main fider-ecs || true
