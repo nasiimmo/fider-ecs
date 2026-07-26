@@ -76,3 +76,4 @@ CMD ./fider migrate && ./fider# test
 # test
 # test
 # test
+# test
