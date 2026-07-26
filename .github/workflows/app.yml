@@ -29,6 +29,11 @@ jobs:
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: ${{ secrets.AWS_REGION }}
 
+      - name: Create ECR repository if not exists
+        run: |
+          aws ecr describe-repositories --repository-names fider-ecs --region eu-west-2 2>/dev/null || \
+          aws ecr create-repository --repository-name fider-ecs --region eu-west-2
+
       - name: Log in to Amazon ECR
         id: login-ecr
         uses: aws-actions/amazon-ecr-login@v1
@@ -41,19 +46,3 @@ jobs:
         run: |
           docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG .
           docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
-
-      - name: Trigger Terraform Apply
-        uses: actions/github-script@v7
-        env:
-          IMAGE_TAG: ${{ github.sha }}
-        with:
-          script: |
-            await github.rest.actions.createWorkflowDispatch({
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              workflow_id: 'terraform-apply.yml',
-              ref: 'main',
-              inputs: {
-                image_tag: process.env.IMAGE_TAG
-              }
-            })
