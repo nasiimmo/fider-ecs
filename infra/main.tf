@@ -74,3 +74,4 @@ module "ecs" {
 # fix
 # update
 # clean start
+# clean deploy
