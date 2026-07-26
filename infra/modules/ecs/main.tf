@@ -1,4 +1,3 @@
-# test 1
 
 resource "aws_security_group" "ecs" {
   name        = "${var.name_prefix}-ecs-sg"
