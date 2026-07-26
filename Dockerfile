@@ -75,3 +75,4 @@ CMD ./fider migrate && ./fider# test
 
 
 # ses test
+# ses email fix
