@@ -97,3 +97,13 @@ variable "admin_email" {
   description = "Admin email address for SES verification"
   type        = string
 }
+variable "smtp_username" {
+  description = "SES SMTP username"
+  type        = string
+}
+
+variable "smtp_password" {
+  description = "SES SMTP password"
+  type        = string
+  sensitive   = true
+}

@@ -89,6 +89,14 @@ resource "aws_ecs_task_definition" "main" {
           value = "587"
         },
         {
+          name  = "EMAIL_SMTP_USERNAME"
+          value = var.smtp_username
+        },
+        {
+          name  = "EMAIL_SMTP_PASSWORD"
+          value = var.smtp_password
+        },
+        {
           name  = "BLOB_STORAGE"
           value = "sql"
         }
@@ -147,3 +155,4 @@ resource "aws_cloudwatch_log_group" "ecs" {
     environment = var.environment
   }
 }
+
