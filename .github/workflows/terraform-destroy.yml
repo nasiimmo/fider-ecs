@@ -44,4 +44,11 @@ jobs:
         run: terraform init
 
       - name: Terraform Destroy
-        run: terraform destroy -auto-approve
+        run: |
+          terraform destroy -auto-approve \
+            -target='module.ecs' \
+            -target='module.alb' \
+            -target='module.rds' \
+            -target='module.acm' \
+            -target='module.iam' \
+            -target='module.network'
