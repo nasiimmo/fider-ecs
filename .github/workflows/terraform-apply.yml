@@ -12,7 +12,12 @@ on:
       - '!infra/outputs.tf'
       - '!images/**'
       - '!README.md'
-
+      
+  workflow_dispatch:
+    inputs:
+      image_tag:
+        required: false
+        type: string
 
   workflow_call:
     inputs:
