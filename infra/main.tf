@@ -48,7 +48,7 @@ module "ecr" {
   source          = "./modules/ecr"
   environment     = var.environment
   name_prefix     = var.name_prefix
-  repository_name = "fider"
+  repository_name = "fider-ecs"
 }
 
 module "ecs" {
