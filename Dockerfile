@@ -71,4 +71,4 @@ HEALTHCHECK --interval=10s --timeout=5s --retries=3 \
     CMD ./fider ping
 
 # Run migrations then start the server
-CMD ./fider migrate && ./fider
+CMD ./fider migrate && ./fider# test
