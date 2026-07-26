@@ -92,3 +92,8 @@ variable "cloudflare_api_token" {
   type        = string
   sensitive   = true
 }
+
+variable "admin_email" {
+  description = "Admin email address for SES verification"
+  type        = string
+}
