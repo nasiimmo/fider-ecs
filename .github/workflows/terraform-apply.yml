@@ -14,20 +14,16 @@ on:
       - '!README.md'
 
 
-      repository_dispatch:
-    types: [trigger-terraform-apply]
-  workflow_call:
-    inputs:
-      image_tag:
-        required: true
-        type: string
-
-
-  workflow_call:
-    inputs:
-      image_tag:
-        required: true
-        type: string
+  workflow_dispatch:
+      inputs:
+        image_tag:
+          required: false
+          type: string
+    workflow_call:
+      inputs:
+        image_tag:
+          required: true
+          type: string
 
 jobs:
   terraform-apply:

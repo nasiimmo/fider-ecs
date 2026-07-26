@@ -56,11 +56,12 @@ jobs:
           IMAGE_TAG: ${{ github.sha }}
         with:
           script: |
-            await github.rest.repos.createDispatchEvent({
+            await github.rest.actions.createWorkflowDispatch({
               owner: context.repo.owner,
               repo: context.repo.repo,
-              event_type: 'trigger-terraform-apply',
-              client_payload: {
+              workflow_id: 'terraform-apply.yml',
+              ref: 'main',
+              inputs: {
                 image_tag: process.env.IMAGE_TAG
               }
             })
